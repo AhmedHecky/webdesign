@@ -131,7 +131,8 @@ body {
   background: linear-gradient(to right, #444bf7, #f74444);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: typing 3s steps(15, end), blink-cursor 1s step-end infinite;
+  animation: typing 3s steps(15, end) infinite,
+    blink-cursor 1s step-end infinite;
   white-space: nowrap;
 }
 
