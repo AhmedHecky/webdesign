@@ -7,36 +7,29 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  overflow: hidden;
-  position: relative;
   font-family: "Fira Code", monospace;
+  overflow: hidden;
 }
 
 /* Navigation Bar */
 .navbar {
-  display: block;
   width: 100%;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  position: absolute;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
+  display: flex;
+  justify-content: space-between;
 }
 
 .nav-links {
   list-style: none;
-  display: flex;
-  justify-content: space-around;
+  display: inline-block;
+  gap: 20px;
   padding: 0;
   margin: 0;
-}
-
-.nav-links li {
-  display: inline;
 }
 
 .nav-links a {
@@ -44,63 +37,72 @@ body {
   font-size: 1rem;
   font-weight: bold;
   color: #ffffff;
-  padding: 10px 15px;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: rgba(255, 255, 255, 0.2);
+  color: #ff8c00;
 }
 
-/* Glowing Blob */
+/* Blob Styles */
+.blob-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .blob {
   position: absolute;
-  top: 50%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 140, 0, 0.6),
-    rgba(255, 0, 128, 0.4),
-    rgba(0, 0, 0, 0)
-  );
+  width: 600px;
+  height: 600px;
   border-radius: 50%;
-  filter: blur(20px);
-  z-index: -1;
+  filter: blur(100px);
 }
 
-/* Code Editor Panel */
+.blob.blue {
+  background: radial-gradient(circle at 50% 50%, #444bf7, #444bf74d);
+  top: 40%;
+  left: 60%;
+  z-index: -2;
+}
+
+.blob.pink {
+  background: radial-gradient(circle at 50% 50%, #f74444, #f744444d);
+  top: 60%;
+  left: 40%;
+  z-index: -2;
+}
+
+/* Panel Styles */
 .panel {
-  position: relative;
-  margin-top: 100px;
-  width: 500px;
+  width: 400px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
   border-radius: 15px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  font-family: "Fira Code", monospace;
-  color: #dcdcdc;
-  white-space: pre-wrap;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
 }
 
-/* Code Header with Traffic Light Dots */
+/* Code Header with Dots */
 .code-header {
   display: flex;
   justify-content: flex-start;
   gap: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .code-header .dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: grey;
 }
 
 .code-header .dot.red {
@@ -118,32 +120,40 @@ body {
 /* Typing Animation */
 .typing-wrapper {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
   overflow: hidden;
-  white-space: nowrap;
 }
 
 .typing-text {
   font-size: 1.4rem;
   font-weight: bold;
-  background: radial-gradient(circle, #ff8c00, #ff0080);
+  background: linear-gradient(to right, #444bf7, #f74444);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
-  animation: typing 5s steps(18) infinite;
-  animation-delay: 3s;
+  animation: typing 3s steps(15, end), blink-cursor 1s step-end infinite;
+  white-space: nowrap;
 }
-.cursor {
-  animation: blinking 0.4s step-end infinite alternate;
-}
+
 @keyframes typing {
   from {
     width: 0;
   }
   to {
-    width: 18ch;
+    width: 14ch;
   }
+}
+
+@keyframes blink-cursor {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.cursor {
+  display: inline-block;
+  font-size: 1.4rem;
+  animation: blinking 0.5s infinite;
 }
 
 @keyframes blinking {
@@ -154,15 +164,14 @@ body {
 
 /* Button */
 .button {
-  display: block;
-  margin: 20px auto 0;
+  margin-top: 20px;
   padding: 12px 36px;
   font-size: 1rem;
   font-weight: bold;
   color: white;
   border: none;
   cursor: pointer;
-  background: linear-gradient(to right, #ff8c00, #ff0080);
+  background: linear-gradient(to right, #444bf7, #f74444);
   border-radius: 10px;
   transition: transform 0.3s ease;
 }

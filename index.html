@@ -3,38 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blob Design</title>
     <link rel="stylesheet" href="styles.css" />
-    <title>Interactive Panel</title>
   </head>
   <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
       <ul class="nav-links">
-        <a href="#"><li>Home</li></a>
-        <a href="#"><li>Product</li></a>
-        <a href="#"><li>About</li></a>
-        <a href="#"><li>Contact</li></a>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
-    <!-- Glowing Blob -->
-    <div class="blob"></div>
+    <!-- Blob Container -->
+    <div class="blob-container">
+      <!-- Blobs -->
+      <div class="blob blue"></div>
+      <div class="blob pink"></div>
 
-    <!-- Code Editor Panel -->
-    <div class="panel">
-      <div class="code-header">
-        <div class="dot red"></div>
-        <div class="dot yellow"></div>
-        <div class="dot green"></div>
-      </div>
-      <div class="content">
-        <div class="typing-wrapper">
-          <span class="typing-text">Ready to lock in?</span
-          ><span class="cursor">|</span>
+      <!-- Panel -->
+      <div class="panel">
+        <div class="code-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
         </div>
-        <button class="button" onclick="launchSites()">Lock in</button>
+        <div class="typing-wrapper">
+          <span class="typing-text">Ready to lock in?</span>
+          <span class="cursor">|</span>
+        </div>
+        <button class="button">Lock In</button>
       </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
