@@ -4,84 +4,165 @@ body {
   height: 100vh;
   background: black;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   overflow: hidden;
   position: relative;
-  backdrop-filter: blur(5px); /* Blur applied to the background */
+  font-family: "Fira Code", monospace;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: rgba(255, 255, 255, 0.2);
 }
 
 /* Glowing Blob */
 .blob {
   position: absolute;
-  top: 40%;
-  left: 70%; /* Blob shifted to the right */
-  width: 400px; /* Smaller size */
-  height: 400px;
-  background: radial-gradient(circle, #ff8c00, #ff0080);
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 140, 0, 0.6),
+    rgba(255, 0, 128, 0.4),
+    rgba(0, 0, 0, 0)
+  );
   border-radius: 50%;
-  filter: blur(25px);
+  filter: blur(20px);
   z-index: -1;
 }
 
-/* Black Panel */
+/* Code Editor Panel */
 .panel {
   position: relative;
+  margin-top: 100px;
   width: 500px;
-  padding: 40px;
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  place-items: center;
-  display: grid;
-  width: 350px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  font-family: "Fira Code", monospace;
+  color: #dcdcdc;
+  white-space: pre-wrap;
 }
 
-/* Typing Text */
-.typing-text {
-  font-size: 2rem;
-  font-weight: bold;
-  background: linear-gradient(#ff8c00, #ff0080);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  padding: 1em;
+/* Code Header with Traffic Light Dots */
+.code-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.code-header .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: grey;
+}
+
+.code-header .dot.red {
+  background: #ff5f56;
+}
+
+.code-header .dot.yellow {
+  background: #ffbd2e;
+}
+
+.code-header .dot.green {
+  background: #27c93f;
+}
+
+/* Typing Animation */
+.typing-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   overflow: hidden;
   white-space: nowrap;
-  border-right: 2px solid;
-  width: 0;
 }
 
-@keyframes blink {
-  0% {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #ff8c00;
-  }
-  100% {
-    border-color: transparent;
-  }
-}
-
-.cursor {
+.typing-text {
+  font-size: 1.4rem;
   font-weight: bold;
-  font-size: 2rem;
-  color: white;
-  animation: blink 0.6s step-end infinite;
+  background: radial-gradient(circle, #ff8c00, #ff0080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: typing 5s steps(18) infinite;
+}
+.cursor {
+  animation: blinking 0.4s step-end infinite alternate;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 18ch;
+  }
+}
+
+@keyframes blinking {
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Button */
 .button {
+  display: block;
+  margin: 20px auto 0;
   padding: 12px 36px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
-  color: white; /* White text */
+  color: white;
   border: none;
   cursor: pointer;
-  background: radial-gradient(circle, #ff8c00, #ff0080);
-  border-radius: 30px;
+  background: linear-gradient(to right, #ff8c00, #ff0080);
+  border-radius: 10px;
   transition: transform 0.3s ease;
 }
 
@@ -91,11 +172,4 @@ body {
 
 .button:active {
   transform: scale(1);
-}
-
-/* Animations */
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
 }

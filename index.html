@@ -3,16 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lock In</title>
     <link rel="stylesheet" href="styles.css" />
+    <title>Interactive Panel</title>
   </head>
   <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <ul class="nav-links">
+        <a href="#"><li>Home</li></a>
+        <a href="#"><li>Product</li></a>
+        <a href="#"><li>About</li></a>
+        <a href="#"><li>Contact</li></a>
+      </ul>
+    </nav>
+
+    <!-- Glowing Blob -->
     <div class="blob"></div>
+
+    <!-- Code Editor Panel -->
     <div class="panel">
-      <div class="typing-text">
-        <span id="typed-text"></span><span class="cursor">|</span>
+      <div class="code-header">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
       </div>
-      <button class="button" onclick="launchSites()">Lock In</button>
+      <div class="content">
+        <div class="typing-wrapper">
+          <span class="typing-text">Ready to lock in?</span
+          ><span class="cursor">|</span>
+        </div>
+        <button class="button" onclick="launchSites()">Lock in</button>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
